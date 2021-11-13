@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Love Nature</title>
+</head>
+<style>
+    @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
+
+html{
+  height: 100%;
+  overflow-x: hidden;
+  
+}
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+  details {
+  margin: 40px;
+}
+summary {
+  writing-mode: vertical-lr;
+  text-align: center;
+  padding: 12px 10px;
+  width: 23px;
+  height: 17px;
+  background-color: var(--primColor);
+  border: 2px solid var(--secoColor);
+  border-radius: var(--cornerRad);
+  color: var(--secoColor);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: transform 200ms ease-in-out 0s;
+}
+summary::before,
+summary::after {
+  position: static;
+  top: 0;
+  left: 0;
+}
+summary::before {
+  content: "";
+}
+summary::after {
+  content: "III";
+  letter-spacing: -1px;
+}
+summary:hover {
+  transform: scale(1.1);
+}
+summary::marker {
+  font-size: 0;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .menu {
+  animation-name: menuAnim;
+}
+details[open] summary::before {
+  content: "X";
+}
+details[open] summary::after {
+  content: "";
+}
+.menu {
+  height: 0;
+  width: fit-content;
+  border-radius: var(--cornerRad);
+  background-color: var(--primColor);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  animation: closeMenu 300ms ease-in-out forwards;
+}
+.menu a {
+  padding: 12px 24px;
+  margin: 0 16px;
+  color: var(--secoColor);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  text-align: center;
+  transition: filter 200ms linear 0s;
+}
+.menu a:nth-of-type(1) {
+  padding-top: 24px;
+}
+.menu a:nth-last-of-type(1) {
+  border-bottom: none;
+}
+.menu a:hover {
+  filter: brightness(200%);
+}
+details::before {
+  content: "← Click This Button";
+  color: var(--secoColor);
+  position: absolute;
+  margin-left: 80px;
+  padding: 10px 10px;
+  opacity: 0.4;
+}
+details[open]::before {
+  animation: fadeMe 300ms linear forwards;
+}
+@keyframes menuAnim {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 312px;
+  }
+}
+@keyframes fadeMe {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+#home{
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.5)),url("N1.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+#home .content{
+  color: #fff;
+  padding-left: 40px;
+  text-align: left;
+  width: 600px;
+}
+.content h1{
+  font-size: 55px;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+  font-family: 'Raleway',sans-serif;
+}
+.content p{
+  font-size: 15px;
+  line-height: 25px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  font-family: 'Raleway',sans-serif;
+  margin: 15px;
+}
+.content button{
+  padding: 15px 25px;
+  margin-top: 20px;
+  background: #d49c00;
+  border-radius: 30px;
+  border: none;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-family: 'Raleway',sans-serif;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+#home .content button:hover{
+  background-color: #fff;
+  color: #000;
+  font-weight: 900;
+}
+
+#info{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+main{
+  grid-area:main;
+}
+
+main>h1{
+  color:var(--clr-font-dark-100);
+  text-align: center;
+  margin-top: 10px;
+  justify-content: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 900;
+}
+
+
+.card{
+  background:var(--clr-card);
+  color:var(--clr-font-dark-200);
+  box-shadow:0 0 10px gray;
+  margin:2rem;
+  margin-left:0;
+  margin-right:0;
+  border-radius: 10px;
+  display:grid;
+  grid-template:
+    "img head" min-content
+    "img text" auto
+    / minmax(50px,1fr) 3fr;
+  grid-column-gap: 2rem;
+}
+.card img{
+  grid-area:img;
+  width:100%;
+  margin:1rem;
+  border-radius:10px;
+}
+.card h3{
+  margin-top:.7rem;
+  grid-area:head;
+  font-weight: 900;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  padding-top: 8px;
+}
+.card p{
+  margin-top:0;
+  padding-right:2rem;
+  grid-area:text;
+  font-family: cursive;
+}
+/*FOOTER*/
+.footer{
+background:#000;
+padding:30px 0px;
+font-family: 'Play', sans-serif;
+text-align:center;
+}
+
+.footer .row{
+width:100%;
+margin:1% 0%;
+padding:0.6% 0%;
+color:gray;
+font-size:0.8em;
+}
+
+.footer .row a{
+text-decoration:none;
+color:gray;
+transition:0.5s;
+}
+
+.footer .row a:hover{
+color:#fff;
+}
+
+.footer .row ul{
+width:100%;
+}
+
+.footer .row ul li{
+display:inline-block;
+margin:0px 30px;
+}
+
+.footer .row a i{
+font-size:2em;
+margin:0% 1%;
+}
+@media (max-width:920px){
+.footer{
+text-align:left;
+padding:5%;
+}
+.footer .row ul li{
+display:block;
+margin:10px 0px;
+text-align:left;
+}
+.footer .row a i{
+margin:0% 3%;
+}
+}
+
+
+
+
+
+
+</style>
+<body>
+  
+      <section id="home">
+        <div class="content">
+          
+          <h1>Care for Nature</h1>
+          <p>“I only feel angry when I see waste. When I see people throwing away things we could use.”
+            —Mother Teresa </p>
+            
+        </div>
+      </section>
+      <section id="info">
+          <div class="container">
+            <main>
+                <h1> The Art of God </h1>
+                
+                <div class="card">
+                  <img class="card-thumb" src="CN1.jpg"></img>
+                  <h3 class="card-title"> The ultimate power source </h3>
+                  <p class="card-content"> I have a close and personal relationship with the Sun. I am named after him as I was born on a Sunday!Each minute of every day, enough sunlight falls on the Earth’s surface to meet the world’s energy demand for an entire year; and it’s free.Unfortunately like most things that Nature provides us and especially when it is provided for free without any demands being made, we humans tend not to respect or value it and in fact very often end up abusing it. 
+                    <br/>
+                    <a class="card-more" href="https://www.greenpeace.org/india/en/story/1532/sun-the-ultimate-source-of-our-energy/">Read more 👉</a>
+                  </p>
+                </div>
+              
+                <div class="card">
+                  <img class="card-thumb" src="CN2.jpg"></img>
+                  <h3 class="card-title"> Rain showers my spirit and waters my soul.</h3>
+                  <p class="card-content"> Rain has great importance in human life because life is not possible without water. The rainy day immediately spreads happiness and peace in the atmosphere. It brings a smile to everyone’s face and also gives a reason to celebrate.
+                    <br/>
+                    <a class="card-more" href="https://www.incredibleindia.org/content/incredibleindia/en/blogs/rain-rain-please-stay.html">Read more 👉</a>
+                  </p>
+                </div>
+              
+                <div class="card">
+                  <img class="card-thumb" src="CN3.jpg"></img>
+                  <h3 class="card-title"> Come together to plant</h3>
+                  <p class="card-content"> Be like a Tree. Stay grounded. Connect with your roots. Turn over a new leaf. Bend before you break. Enjoy your unique natural beauty. Keep growing.”Trees have numerous benefits and it can hardly be overstated.They support the environment in various ways and without them; life on earth would be impossible. 
+                    <br/>
+                    <a class="card-more" href="https://www.nationalforests.org/blog/pando-documenting-a-tree-that-redefines-what-trees-can-be">Read more 👉</a>
+                  </p>
+                </div>
+
+                <div class="card">
+                  <img class="card-thumb" src="CN4.jpg"></img>
+                  <h3 class="card-title"> The mountains are calling, and I must go.</h3>
+                  <p class="card-content"> Home to 1.2 billion people and occupying nearly a quarter of the earth’s surface, mountains and their surrounding ecosystems provide a bounty of life-sustaining resources.Over half of humanity relies on these freshwater reserves drawn from mountain ecosystems.
+                    <br/>
+                    <a class="card-more" href="https://reliefweb.int/report/nepal/taking-care-our-mountains">Read more 👉</a>
+                  </p>
+                </div>
+
+                <div class="card">
+                  <img class="card-thumb" src="CN5.jpg"></img>
+                  <h3 class="card-title"> Think Blue and go green</h3>
+                  <p class="card-content"> The ocean is the largest ecosystem on Earth, and it is the planet’s life support system.
+                    The ocean is essential for all life on Earth, including humans. To ensure a sustainable future, we must protect and preserve healthy marine ecosystems.
+                    <br/>
+                    <a class="card-more" href="https://marine-conservation.org/why-protect-the-ocean/">Read more 👉</a>
+                  </p>
+                </div>
+
+              </main>
+            
+          </div>
+      </section>
+      <footer>
+        <div class="footer">
+        <div class="row">
+        <a href="https://github.com/coder024"><i class="fa fa-github"></i></a>
+        <a href="https://www.instagram.com/insta_khushi25/"><i class="fa fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/khushboo-kumari-767434201/"><i class="fa fa-linkedin"></i></a>
+        <a href="https://twitter.com/khushi8709"><i class="fa fa-twitter"></i></a>
+        </div>
+        
+        <div class="row">
+        <ul>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Our Services</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Career</a></li>
+        </ul>
+        </div>
+        
+        <div class="row">
+        Copyright © 2022 -carefornature - All rights reserved
+        </div>
+        </div>
+        </footer>
+        
+</body>
+</html>

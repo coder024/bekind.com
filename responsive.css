@@ -1,0 +1,148 @@
+@media only screen and (max-width: 1140px){
+    .nav-list{
+        flex-direction: column;
+    }
+    .navbar{
+        height: 447px;
+        flex-direction: column;
+        transition: all 0.7s ease-out;
+    }
+    .rightNav{
+        text-align: center;
+    }
+    .box-main{
+        flex-direction: column-reverse;
+        max-width: 100%;
+    }
+
+    #search{
+        width: 100%;
+    }
+    .burger{
+    display: block;
+    }
+    .h-nav-resp{
+        height: 72px;
+    }
+    .v-class-resp{
+        opacity: 0;
+    }
+    .section{
+        flex-direction: column-reverse;
+    }
+    .text-small{
+        text-align: center;
+    }
+    .text-big{
+        text-align: center;
+    }
+    .buttons{
+        text-align: center;
+    }
+    .paras {
+    padding: 0px;
+}
+}
+@media (min-width: 1024px) {
+    .card__thumb {
+      max-height: 500px;
+    }
+  }
+  .card__thumb::after {
+    position: absolute;
+    top: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 40%, rgba(255, 255, 255, 0) 100%);
+    transition: 0.3s;
+    
+  }
+  @media (min-width: 1024px) {
+    .card__thumb::after {
+      top: calc(100% - 140px);
+    }
+  }
+  .card__image {
+    transition: 0.5s ease-in-out;
+  }
+  .card__caption {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    padding: 0 20px;
+    color: white;
+    transform: translateY(-50%);
+    text-align: center;
+    transition: 0.3s;
+    margin:20px 40px;
+  }
+  @media (min-width: 1024px) {
+    .card__caption {
+      top: calc(100% - 110px);
+      transform: unset;
+    }
+  }
+  .card__title {
+    display: -webkit-box;
+    max-height: 85px;
+    overflow: hidden;
+    font-family: "Playfair Display", serif;
+    font-size: 23px;
+    line-height: 28px;
+    text-shadow: 0px 1px 5px black;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .card__snippet {
+    display: -webkit-box;
+    max-height: 150px;
+    margin: 20px 0;
+    overflow: hidden;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    transition: 0.5s ease-in-out;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
+  @media (min-width: 1024px) {
+    .card__snippet {
+      margin: 60px 0;
+    }
+  }
+  .card__button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    border: 1px solid white;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .card__button:hover {
+    color: black;
+    background-color: white;
+  }
+  @media only screen and (max-width: 1140px){
+    .flip{
+      top: 50%;
+    left: 50%; 
+    margin: -24px 0 0 -80px;
+    padding: 37px 6px 0px 6px;
+    
+    
+    }
+  }
+  @media only screen and (max-width: 1140px){
+    .firstHalf .flip{
+      padding: 0px 0px 0px;
+      top:20%;
+    }
+  }
+

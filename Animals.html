@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <title>Love Animals</title>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins");  
+html {
+  scroll-behavior: smooth;
+}
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 0%;
+  height: 3px;
+  background-color: #e2e2e2;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 12vh;
+  background-color: #131313;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.logo {
+  color: #e2e2e2;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 20px;
+}
+.logo a {
+  text-decoration: none;
+  color: #e2e2e2;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  width: 45%;
+  justify-content: space-between;
+}
+.nav-links li {
+  list-style: none;
+}
+.nav-links a {
+  color: #e2e2e2;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-size: 14px;
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-links a:hover, .nav-links a:focus {
+  color: #afafaf;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  background-color: #afafaf;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 300ms ease-in-out;
+}
+.nav-links a:hover::after, .nav-links a:focus::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.burger {
+  display: none;
+}
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #e2e2e2;
+  margin: 5px;
+  transition: all 300ms ease-in-out;
+}
+
+.landing-page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("LA.jpg");
+  background-position: bottom;
+  background-color: #666;
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: #e2e2e2;
+}
+.landing-page a {
+  color: #e2e2e2;
+  text-decoration: none;
+  position: absolute;
+  bottom: 5vh;
+}
+.landing-page a span {
+  position: absolute;
+  bottom: 12vh;
+  left: 50%;
+  margin-left: -8px;
+  width: 16px;
+  height: 16px;
+  border-left: 2px solid #e2e2e2;
+  border-bottom: 2px solid #e2e2e2;
+  transform: rotate(-45deg);
+  animation: homescroll 2s infinite;
+  opacity: 0;
+}
+.landing-page a span:nth-of-type(1) {
+  animation-delay: 0s;
+}
+.landing-page a span:nth-of-type(2) {
+  bottom: 9vh;
+  animation-delay: 0.15s;
+}
+.landing-page a span:nth-of-type(3) {
+  bottom: 6vh;
+  animation-delay: 0.3s;
+}
+@keyframes homescroll {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-text-container {
+  margin-top: 12vh;
+}
+
+.landing-page-text {
+  font-family: monospace;
+  font-size: 3rem;
+  color: #e2e2e2;
+}
+
+.blink {
+  color: #e2e2e2;
+  animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+  to {
+    opacity: 0;
+  }
+}
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+@media screen and (max-width: 960px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .nav-links {
+    position: absolute;
+    right: 0px;
+    height: 88vh;
+    top: 12vh;
+    background-color: #131313;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transform: translatex(100%);
+    transition: transform 500ms ease-in-out;
+    z-index: 999;
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+
+  .burger {
+    display: initial;
+    cursor: pointer;
+  }
+}
+.nav-active {
+  transform: translatex(0%);
+}
+
+@keyframes navlinkFade {
+  from {
+    opacity: 0;
+    transform: translatex(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translatex(0);
+  }
+}
+.home-card-wrapper {
+  width: 100%;
+  background-color: #afafaf;
+}
+
+.home-card-container {
+  max-width: 75rem;
+  margin: auto;
+  padding: 32px;
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.home-card-container > * {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 15rem;
+  max-width: calc(12.5rem + 13vw);
+  background-color: #e2e2e2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0.25em 0.6em #0005, 0 0.65em 1em #0004;
+  transition: transform 300ms ease;
+}
+.home-card:hover, .home-card:focus-within {
+  transform: scale(1.05);
+}
+.home-card img {
+  display: block;
+  max-width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  height: auto;
+}
+.home-card .home-card-body h3 {
+  padding-block: 16px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.home-card .home-card-body p {
+  padding-inline: 16px;
+  padding-block: 0 16px;
+  text-align: center;
+  line-height: 1.3;
+  font-style: italic;
+}
+.home-card .home-card-body a {
+  text-decoration: none;
+  color: white;
+  outline: none;
+  display: block;
+  margin: 0 auto 16px auto;
+  width: fit-content;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 300ms ease;
+  background-color: #666;
+}
+.home-card .home-card-body a:hover, .home-card .home-card-body a:focus {
+  background-color: #131313;
+}
+main {
+    width: 340px;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000;
+    border-radius: 7px;
+    box-shadow: -5px -5px 25px rgba(0, 0, 0, 0.705);
+    margin: 50px auto;
+
+    animation-name: rotate;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+}
+
+.top-card {
+    width: 100%;
+    /* height: 200px; */
+}
+
+.top-card img {
+    width: 100%;
+}
+
+.top-card .menu-icon {
+    position: relative;
+    width: 22px;
+    bottom: 13.7em;
+    left: 1.1em;
+    cursor: pointer;
+}
+
+.top-card .menu-icon .menu {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+    margin-bottom: 6px;
+    opacity: .5;
+    transition: .4s;
+}
+
+.top-card .menu-icon .item1 {
+    left: -5px;
+}
+
+.top-card .menu-icon .item2 {
+    left: 5px;
+}
+
+.top-card .menu-icon:hover .menu {
+    left: 0;
+    border-radius: 1px;
+}
+
+.top-card .name {
+    width: 50%;
+    height: 0;
+    text-align: center;
+    padding-left: 25px;
+}
+
+.top-card .name h1 {
+    position: relative;
+    font-size: 50px;
+    font-weight: 800;
+    color: #000;
+    opacity: .5;
+    bottom: 140px;
+    line-height: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 20px;
+    color: #000;
+    font-weight: 600;
+    margin: 12px 0;
+    border-bottom: 4px solid rgba(1, 106, 175, 0.603);
+    width: 10%;
+}
+
+.middle-card, footer {
+    margin: 5px 25px;
+}
+
+.middle-card {
+    text-align: justify;
+}
+footer {
+    text-align: center;
+}
+
+footer .social-icon {
+    /* padding: 7%; */
+    font-size: 20px;
+    margin: 0 5%;
+    color: rgba(0, 0, 0, .9);
+}
+
+.facebook:hover {color:#3b5999;}
+.twitter:hover {color: #55acee;}
+.google:hover {color: #dd4b39;}
+.github:hover {color: #302f2f;}
+.linkedin:hover {color: #0077B5;}
+
+footer .links {
+    border-top: 2px solid rgba(0, 0, 0, .1);
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px 0;
+}
+
+footer .links  address {
+    font-size: 15px;
+}
+
+footer .links a { 
+    text-decoration: none;
+    font-weight: 600;
+    color: rgba(0, 0, 0, .9);
+}
+
+/* ANIMATION */
+@keyframes rotate {
+    0% {
+        transform-origin: left bottom;
+        transform: rotate3d(0, 0, 1, 45deg);
+        opacity: 0;
+    }
+    100% {
+        transform-origin: left bottom;
+        transform: none;
+        opacity: 1;
+    }
+}
+.container{
+  height: 70px;
+  background: black;
+}
+.container p{
+  text-align: center;
+  color: #e2e2e2;
+  align-items: center;
+  justify-content: center;
+  display: block;
+ 
+}
+
+</style>
+<body>
+    <!-- navbar -->
+<header>
+	<nav>
+		<div class="logo">
+			<a href="#">Care For Animals</a>
+		</div>
+		<ul class="nav-links">
+			<li><a href="#">Home</a></li>
+			<li><a href="#home-card-wrapper">Blogs</a></li>
+			<li><a href="#aboutme">About</a></li>
+			<li><a href="#aboutme">Contact</a></li>
+		</ul>
+		<div class="burger">
+			<div class="line1"></div>
+			<div class="line2"></div>
+			<div class="line3"></div>
+		</div>
+	</nav>
+
+	<!-- scroll indicator -->
+	<div class="progress-bar"></div>
+</header>
+
+<!-- home page - typewriter effect -->
+<section>
+	<div class="landing-page">
+		<div class="typewriter-text-container">
+			<span class="landing-page-text" id="typewriter-text"></span>
+			<span class="landing-page-text blink">|</span>
+		</div>
+		<a href="#home-card-wrapper">
+			<span></span>
+			<span></span>
+			<span></span>
+		</a>
+	</div>
+</section>
+
+<!-- homepage cards -->
+<div class="home-card-wrapper" id="home-card-wrapper">
+	<div class="home-card-container">
+		<div class="home-card">
+			<img src="LA3.jpg" alt="img 1">
+			<div class="home-card-body">
+				<h3>Person's Best Friend</h3>
+				<p> Dogs(most lovable pets) are incredible friends to people, and they’ve been companions through centuries.The connection was natural because both people and dogs are social beings. 
+        </p>
+				<a href="https://www.rover.com/blog/dogs-called-mans-best-friend/">
+					Learn More
+				</a>
+			</div>
+		</div>
+		<div class="home-card">
+			<img src="LA2.jpg" alt="img 2">
+			<div class="home-card-body">
+				<h3>Birds love to connect</h3>
+				<p>Birds remember their interactions with humans and socializing, or playtime provides a positive experience for them to associate with you.A new source of positivity in our lives, this is the perfect time to get a pet. </p>
+				<a href="https://blog.nwf.org/2019/02/birds-and-the-bees-remarkable-wildlife-bonds/">
+					Learn More
+				</a>
+			</div>
+		</div>
+		<div class="home-card">
+			<img src="A1.jpg" alt="img 3">
+			<div class="home-card-body">
+				<h3>Lion loves humans</h3>
+				<p>An animal that scares most humans can be a kitten and a mans best friend.The basic message: Treat animals with respect and do nit threaten them and they will do the same to you</p>
+				<a href="https://wilderness-society.org/even-lions-love-humans/">
+					Learn More
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<main>
+  <section class="top-card">
+    <img src="Mypic.jpg" alt="user picture">
+    <div class="menu-icon">
+      <div class="menu item1"></div>
+      <div class="menu item2"></div>
+    </div>
+    <div class="name">
+      <h1>Khushboo Kumari</h1>
+    </div>
+  </section>
+
+  <section class="middle-card">
+    <h1>About</h1>
+    <p>Hii! I am Khushboo, my passion towards nature and care for the enviornment have brought me here.Feel free to contact me if we share common interest.I'll be so glad to connect.</p>
+  </section>
+  <footer id="aboutme">
+    <h1>Contact</h1>
+    <section class="links">
+      <address>Linkedin: <a href="https://www.linkedin.com/in/khushboo-kumari-767434201/" target="_blank">Khushboo Kumari</a></address>
+      <address>Twitter: <a href="https://twitter.com/khushi8709">khushi@8709</a></address>
+    </section>
+  </footer>
+</main>
+
+</main>
+<section id="last">
+  <div class="container">
+    <p>Copyright © 2022 -careforanimals - All rights reserved</p>
+  </div>
+</section>
+
+<script>
+    // typewriter text
+const typewriter_text = ["Treat Animals with Kindness and love!", "Welcome! to my site."];
+
+// responsive navigation
+const navSlide = () => {
+	const burger = document.querySelector ('.burger');
+	const nav = document.querySelector ('.nav-links');
+	const navlinks = document.querySelectorAll ('.nav-links li');
+
+	burger.addEventListener ('click', () => {
+		// toggle nav
+		nav.classList.toggle ('nav-active');
+	
+		// animate links
+		navlinks.forEach ((link, index) => {
+			if (link.style.animation) {
+				link.style.animation = '';
+			} else {
+				link.style.animation = `navlinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+			}
+		});
+		
+		// animate burger
+		burger.classList.toggle ('toggle');
+	});
+}
+
+// sleep function
+function sleep(milliseconds) {
+    let timeStart = new Date().getTime();
+    while (true) {
+      	let elapsedTime = new Date().getTime() - timeStart;
+      	if (elapsedTime > milliseconds) {
+        	break;
+      	}
+    }
+}
+
+let textIter = 0;
+
+// typewriter effect - text deletion
+function deletingEffect () {
+	let word = typewriter_text[textIter].split ("");
+	var loopDeleting = function () {
+		if (word.length > 0) {
+			word.pop ();
+			document.getElementById ('typewriter-text').innerHTML = word.join ("");
+		} else {
+			if (typewriter_text.length > (textIter + 1)) {
+				textIter++;
+			} else {
+				textIter = 0;
+			}
+
+			typingEffect ();
+			return false;
+		}
+
+		setTimeout (loopDeleting, 150);
+	}
+
+	loopDeleting ();
+}
+
+// typewriter effect - text writing
+function typingEffect () {
+	let word = typewriter_text[textIter].split ("");
+	var loopTyping = function () {
+		if (word.length > 0) {
+			document.getElementById ('typewriter-text').innerHTML += word.shift();
+		} else {
+			sleep (1000);
+			deletingEffect ();
+			return false;
+		}
+
+		setTimeout (loopTyping, 150);
+	}
+
+	loopTyping ();
+}
+
+// scroll indicator
+function UpdateScrollProgress () {
+	var toppos = document.documentElement.scrollTop;
+	var remaining = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+	var percentage = (toppos / remaining) * 100;
+
+	document.getElementsByClassName ('progress-bar')[0].style.width = percentage + "%";
+}
+
+// scroll event listener
+document.addEventListener ("scroll", () => {
+	UpdateScrollProgress ();
+})
+
+// calling functions
+typingEffect ();
+navSlide ();
+
+</script>
+</body>
+</html>
